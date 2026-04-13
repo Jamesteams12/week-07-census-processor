@@ -1,6 +1,6 @@
 import csv
 
-
+# Still trying to fix stats and write report
 while True:
     with open("sa_census.csv") as f:
         reader = csv.DictReader(f)
@@ -102,10 +102,11 @@ while True:
                         break
                 else:
                     print("invalid input")
-        elif menu == "Write report":
-            with open('output.csv', 'w', newline='') as file:
-                writer = csv.writer(file)
-                writer.writerows(print(f"{row['name']}: population: {row['population']} Area_km2: {row['area_km2']} Main Language: {row['main_language']} GDP per capita: {row['gdp_per_capita']}"))
+        elif menu == "Write Report":
+            for row in reader:
+                with open('output.csv', 'w', newline='') as file:
+                    writer = csv.writer(file)
+                    writer.writerows(print(f"{row['name']}: population: {row['population']} Area_km2: {row['area_km2']} Main Language: {row['main_language']} GDP per capita: {row['gdp_per_capita']}"))
         elif menu == "Exit":
             print("Exitting...")
             break
